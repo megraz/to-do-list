@@ -90,12 +90,25 @@
             let button = document.createElement("button");
             button.textContent = "remove";
             document.querySelector(".liste").appendChild(button);
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            p.appendChild(checkbox);
 
             button.addEventListener("click", function () {
+                /* ou à la place des 4 lignes suivante mettre p.remove; */
                 let div = document.querySelector(".liste");
                 div.removeChild(h2);
                 div.removeChild(p);
                 div.removeChild(button);
+                div.removeChild(checkbox);
+            });
+
+            p.addEventListener("dblclick", function () {
+                p.contentEditable = "true";
+            });
+
+              h2.addEventListener("dblclick", function () {
+                h2.contentEditable = "true";
             });
 
             event.preventDefault();
