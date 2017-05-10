@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Génération tableau</title>
+    <style>
+        table {
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        let array = ['ga', 'zo', 'bu', 'meu'];
+        /*pour rajouter un nouvel element à notre tableau 
+        on utilise un push dc table.push(''); si on a écrit let tab = ['ga','zo']
+        ou array.push('') dans mon cas puisque let array = ['', '']*/
+        array.push('beau');
+        for (let i = 0; i < array.length; i++) {
+            console.log(array[i]);
+            let table = document.createElement("table");
+            table.textContent = array[i];
+            document.body.appendChild(table);
+        }
+    </script>
+
+</body>
+
+</html>
