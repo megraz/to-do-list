@@ -74,11 +74,51 @@
 
 
     <script type="text/javascript">
+        let todos = [];
+        let ul = document.createElement("ul");
+        document.body.appendChild(ul);
+
+        function addTodo(titre, comment) {
+            todos.push(titre + "_" + comment);
+
+        }
+
+        function suppTodo(element) {
+            todos.splice(element, 1);
+        }
+        // display todos
+        function afficherListe() {
+            ul.textContent = "";
+            for (let i = 0; i < todos.length; i++) {
+                let li = document.createElement('li');
+                li.textContent = todos[i];
+                ul.appendChild(li);
+                let button = document.createElement("button");
+                button.textContent = "supprimer";
+                ul.appendChild(button);
+                button.addEventListener("click", function() {
+                    suppTodo(i);
+                    afficherListe();
+                })
+            }
+
+        }
+
         let form = document.querySelector("form");
-        form.addEventListener("submit", function (event) {
+        form.addEventListener("submit", function(event) {
             let title = document.querySelector("#title").value;
             let comment = document.querySelector("#comment").value;
             console.log(title, comment);
+
+            // add to todos
+            addTodo(title, comment);
+            afficherListe();
+
+
+            event.preventDefault();
+        });
+
+        function rendu() {
             let h2 = document.createElement("h2");
             h2.innerHTML = title + " ";
             document.querySelector(".liste").appendChild(h2);
@@ -93,46 +133,18 @@
             p.appendChild(checkbox);
             /*pour créer un bouton checkbox sur tous mes paragraphes */
 
-            button.addEventListener("click", function () {
+            button.addEventListener("click", function() {
                 p.remove;
             });
 
-            p.addEventListener("dblclick", function () {
+            p.addEventListener("dblclick", function() {
                 p.contentEditable = "true";
             });
 
-            h2.addEventListener("dblclick", function () {
+            h2.addEventListener("dblclick", function() {
                 h2.contentEditable = "true";
             });
-
-
-            let afficherListe = ['titre', 'commentaire', 'h2', 'p'];
-            for (let i = 0; x < afficherListe.length; i++) {
-                
-            }
-            console.log(AfficherList.length);
-
-            function add (element1, element2) {
-                element1 = title.value;
-                element2 = comment.value;
-                Afficherliste.push(element1, element2)
-            }
-            function supp (){
-                Afficherliste.slice();
-
-            }
-
-            /* test 1
-            for (let i = 0; i < donnees.length; i++) {
-                console.log(donnees[i]);
-                let table = document.createElement("table");
-                table.textContent = donnees[i];
-                document.body.appendChild(table);
-            }
-           */
-
-            event.preventDefault();
-        });
+        }
     </script>
 </body>
 
